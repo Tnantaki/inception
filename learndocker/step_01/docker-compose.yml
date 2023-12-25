@@ -1,0 +1,10 @@
+version: '3'
+services:
+  nginx:
+    image: nginx-img
+    container_name: nginx-con
+    build:
+      context: nginx_src
+      dockerfile: Dockerfile
+    ports:
+      - 100:100

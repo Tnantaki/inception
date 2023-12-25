@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx:
+    image: nginx-img
+    container_name: nginx-con
+    build:
+      context: src/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 100:100
+    networks:
+      - incep
+    depends_on:
+      - wordpress
+  wordpress:
+    image: wordpress-img
+    container_name: wordpress-con
+    build:
+      context: src/wordpress
+      dockerfile: Dockerfile
+    networks:
+      - incep
+
+networks:
+  incep:
+    driver: bridge

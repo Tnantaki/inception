@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nginx:
+    image: nginx-img
+    container_name: miawmiaw
+    build:
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    networks:
+      - test
+networks:
+  test:
+    driver: bridge

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  nginx:
+    image: incep-img
+    container_name: incep-con
+    build:
+      context: incep_src
+      dockerfile: Dockerfile
+    ports:
+      - 100:100
