@@ -1,6 +1,5 @@
-#!bin/bash
+#!/bin/bash
 
-while true;
 service mariadb start
 
 if [ -d "/var/lib/mysql/$DB_NAME" ]
@@ -19,4 +18,4 @@ else
 	echo "Create database success"
 fi
 
-mariadb
+# mysqld --console --bind-address=0.0.0.0 --port=3306 --user=root
