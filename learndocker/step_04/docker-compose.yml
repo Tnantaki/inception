@@ -1,0 +1,44 @@
+version: '3'
+services:
+  # nginx:
+  #   image: nginx-img
+  #   container_name: nginx-con
+  #   build:
+  #     context: src/nginx
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 100:100
+  #   networks:
+  #     - incep
+  #   depends_on:
+  #     - wordpress
+  # wordpress:
+  #   image: wordpress-img
+  #   container_name: wordpress-con
+  #   build:
+  #     context: src/wordpress
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     - incep
+  #   env_file:
+  #     - .env
+  # mariadb:
+  #   image: mariadb-img
+  #   container_name: mariadb-con
+  #   build:
+  #     context: src/mariadb
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     - incep
+  #   env_file:
+  #     - .env
+  test:
+    image: test-img
+    container_name: test-con
+    build:
+      context: src/test
+      dockerfile: Dockerfile
+
+networks:
+  incep:
+    driver: bridge
