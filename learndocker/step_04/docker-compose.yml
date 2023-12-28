@@ -2,7 +2,7 @@ version: '3'
 services:
   nginx:
     image: nginx-img
-    container_name: nginx-con
+    container_name: nginx
     build:
       context: src/nginx
       dockerfile: Dockerfile
@@ -14,7 +14,7 @@ services:
       - wordpress
   wordpress:
     image: wordpress-img
-    container_name: wordpress-con
+    container_name: wordpress
     build:
       context: src/wordpress
       dockerfile: Dockerfile
@@ -22,9 +22,11 @@ services:
       - incep
     env_file:
       - .env
+    depends_on:
+      - mariadb
   mariadb:
     image: mariadb-img
-    container_name: mariadb-con
+    container_name: mariadb
     build:
       context: src/mariadb
       dockerfile: Dockerfile
