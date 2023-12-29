@@ -20,7 +20,7 @@ COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
 COPY	./tools/script.sh /home/
 
-RUN		bash /home/script.sh && rm /home/script.sh
+# RUN		bash /home/script.sh && rm /home/script.sh
 
 RUN		service php7.4-fpm start
 
