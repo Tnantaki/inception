@@ -7,7 +7,7 @@ services:
       context: src/nginx
       dockerfile: Dockerfile
     ports:
-      - 100:100
+      - 140:140
     networks:
       - incep
     depends_on:
@@ -18,10 +18,14 @@ services:
     build:
       context: src/wordpress
       dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
     networks:
       - incep
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     depends_on:
       - mariadb
   mariadb:
@@ -30,11 +34,15 @@ services:
     build:
       context: src/mariadb
       dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
     restart: always
     networks:
       - incep
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
 
 networks:
   incep:

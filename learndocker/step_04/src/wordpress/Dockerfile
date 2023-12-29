@@ -1,5 +1,9 @@
 FROM	debian:bullseye
 
+ARG		DB_NAME \
+		DB_USER \
+		DB_PASSWORD
+
 # install php
 RUN		apt update\
 		&& apt install vim wget php7.4 php7.4-fpm -y\
@@ -13,6 +17,10 @@ RUN		mkdir -p /var/www/html\
 		&& chmod -R 755 /var/www/html/wordpress
 
 COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/
+
+COPY	./tools/script.sh /home/
+
+RUN		bash /home/script.sh && rm /home/script.sh
 
 RUN		service php7.4-fpm start
 

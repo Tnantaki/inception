@@ -1,5 +1,9 @@
 FROM	debian:bullseye
 
+ARG		DB_NAME \
+		DB_USER \
+		DB_PASSWORD
+
 RUN		apt update\
 		&& apt install vim mariadb-server mariadb-client -y
 

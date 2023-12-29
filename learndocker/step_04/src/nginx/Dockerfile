@@ -8,4 +8,4 @@ COPY	./conf/nginx.conf ./etc/nginx/conf.d/
 
 CMD		[ "nginx", "-g", "daemon off;" ]
 
-EXPOSE	100
+EXPOSE	140
