@@ -9,7 +9,7 @@ services:
     ports:
       - 130:130
     volumes:
-      - mariadb-database:/var/www/html/wordpress
+      - wordpress-content:/var/www/html/wordpress
     networks:
       - incep03
     depends_on:
@@ -21,12 +21,12 @@ services:
       context: src/wordpress
       dockerfile: Dockerfile
     volumes:
-      - mariadb-database:/var/www/html/wordpress
+      - wordpress-content:/var/www/html/wordpress
     networks:
       - incep03
 
 volumes:
-  mariadb-database:
+  wordpress-content:
     driver: local
 networks:
   incep03:

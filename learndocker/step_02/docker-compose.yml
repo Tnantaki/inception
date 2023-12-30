@@ -10,5 +10,7 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_PASSWORD: ${DB_PASSWORD}
+    # env_file:
+    #   - .env
     ports:
-      - 100:100
+      - 120:120

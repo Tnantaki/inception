@@ -5,6 +5,8 @@ RUN		apt update\
 	
 COPY	./conf/nginx.conf ./etc/nginx/conf.d/
 
+COPY	./html/index.html ./var/www/html/
+
 CMD		[ "nginx", "-g", "daemon off;" ]
 
 EXPOSE	100

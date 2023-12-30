@@ -9,8 +9,7 @@ RUN		apt update\
 		&& apt install vim nginx -y
 
 # install php
-RUN		apt install wget php7.4 php7.4-fpm -y\
-		&& apt install php-mysql php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip -y
+RUN		apt install wget php7.4 php7.4-fpm php-mysql -y\
 
 # load wordpress content
 RUN		mkdir -p /var/www/html\
@@ -38,4 +37,4 @@ RUN		bash /home/mariadb.sh
 
 CMD		[ "bash", "/home/start_server.sh" ]
 
-EXPOSE	100
+EXPOSE	120

@@ -16,8 +16,9 @@ stop:
 
 re: down build
 
-clean: down
-	docker system prune --all
+clean:
+	docker compose -f docker-compose.yml --env-file .env down --rmi all --volumes
+#	docker system prune --all
 
 fclean:
 	docker stop $(docker ps -qa)
