@@ -7,7 +7,9 @@ services:
       context: src/nginx
       dockerfile: Dockerfile
     ports:
-      - 100:100
+      - 130:130
+    volumes:
+      - mariadb-database:/var/www/html/wordpress
     networks:
       - incep03
     depends_on:

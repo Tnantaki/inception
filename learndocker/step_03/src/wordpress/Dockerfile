@@ -2,8 +2,8 @@ FROM	debian:bullseye
 
 # install php
 RUN		apt update\
-		&& apt install vim wget php7.4 php7.4-fpm -y\
-		&& apt install php-mysql php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip -y
+		&& apt install vim wget php7.4 php7.4-fpm php7.4-mysql -y
+		# && apt install php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip -y
 
 # load wordpress content
 RUN		mkdir -p /var/www/html\
@@ -17,3 +17,5 @@ COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/
 RUN		service php7.4-fpm start
 
 CMD		[ "/usr/sbin/php-fpm7.4", "-F" ]
+
+# CMD		[ "sleep", "infinity" ]
