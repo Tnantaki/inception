@@ -9,7 +9,7 @@ services:
     ports:
       - 100:100
     networks:
-      - incep
+      - incep03
     depends_on:
       - wordpress
   wordpress:
@@ -18,9 +18,14 @@ services:
     build:
       context: src/wordpress
       dockerfile: Dockerfile
+    volumes:
+      - mariadb-database:/var/www/html/wordpress
     networks:
-      - incep
+      - incep03
 
+volumes:
+  mariadb-database:
+    driver: local
 networks:
-  incep:
+  incep03:
     driver: bridge

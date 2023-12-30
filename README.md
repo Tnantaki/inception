@@ -3,7 +3,7 @@
 ## learn docker
 ### step 01
 #### description
-- server nginx that server default website via port `100`.
+- server nginx that serve default website via port `100`.
 - execute `make` for run server, execute `make down` to down server.
 - open browser with URL `localhost:100`.
 #### knowledge
@@ -14,7 +14,14 @@
 - execute `make` for run server, execute `make down` to down server.
 - open browser with URL `localhost:100`.
 #### knowledge
-- Pass environment in Docker.
 - Install 3 service to serve wordpress browser.
+- Pass environment in Docker.
+### step 03
+- 2 container, nginx and wordpress.
+- execute `make` for run server, execute `make down` to down server.
+- open browser with URL `localhost:100`.
+#### knowledge
+- How 2 container connected and tranfer data.
+- Docker volume.
 
 ## src
