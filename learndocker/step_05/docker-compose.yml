@@ -9,7 +9,7 @@ services:
     ports:
       - 140:140
     networks:
-      - incep04
+      - incep05
     depends_on:
       - wordpress
   wordpress:
@@ -23,7 +23,7 @@ services:
         DB_USER: ${DB_USER}
         DB_PASSWORD: ${DB_PASSWORD}
     networks:
-      - incep04
+      - incep05
     # env_file:
     #   - .env
     depends_on:
@@ -40,10 +40,14 @@ services:
         DB_PASSWORD: ${DB_PASSWORD}
     restart: always
     networks:
-      - incep04
+      - incep05
     # env_file:
     #   - .env
 
+volumes:
+  mariadb-database:
+    driver: local
+    driver_opts:
 networks:
-  incep04:
+  incep05:
     driver: bridge
