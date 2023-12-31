@@ -1,13 +1,10 @@
 FROM	debian:bullseye
 
-ARG		DB_NAME \
-		DB_USER \
-		DB_PASSWORD
+ARG		DB_NAME DB_USER DB_PASSWORD DB_ROOT DB_HOSTNAME
 
 # install php
 RUN		apt update\
-		&& apt install vim wget php7.4 php7.4-fpm -y\
-		&& apt install php-mysql php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip -y
+		&& apt install vim wget php7.4 php7.4-fpm php7.4-mysql -y
 
 # load wordpress content
 RUN		mkdir -p /var/www/html\
@@ -20,6 +17,8 @@ COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
 COPY	./tools/script.sh /home/
 
+RUN		chmod +x /home/script.sh\
+		&& bash /home/script.sh
 # RUN		bash /home/script.sh && rm /home/script.sh
 
 RUN		service php7.4-fpm start

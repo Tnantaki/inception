@@ -3,7 +3,6 @@ FROM	debian:bullseye
 # install php
 RUN		apt update\
 		&& apt install vim wget php7.4 php7.4-fpm php7.4-mysql -y
-		# && apt install php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip -y
 
 # load wordpress content
 RUN		mkdir -p /var/www/html\

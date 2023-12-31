@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 140:140
+    volumes:
+      - wordpress-content:/var/www/html/wordpress
     networks:
       - incep04
     depends_on:
@@ -22,10 +24,12 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_PASSWORD: ${DB_PASSWORD}
+        DB_HOSTNAME: ${DB_HOSTNAME}
+        DB_ROOT: ${DB_ROOT}
+    volumes:
+      - wordpress-content:/var/www/html/wordpress
     networks:
       - incep04
-    # env_file:
-    #   - .env
     depends_on:
       - mariadb
   mariadb:
@@ -38,12 +42,19 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_PASSWORD: ${DB_PASSWORD}
-    restart: always
+        DB_ROOT: ${DB_ROOT}
+    volumes:
+      - mariadb-database:/var/lib/mysql
     networks:
       - incep04
     # env_file:
     #   - .env
 
+volumes:
+  wordpress-content:
+    driver: local
+  mariadb-database:
+    driver: local
 networks:
   incep04:
     driver: bridge
