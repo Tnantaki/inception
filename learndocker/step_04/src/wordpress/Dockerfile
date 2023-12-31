@@ -15,11 +15,16 @@ RUN		mkdir -p /var/www/html\
 
 COPY	./conf/www.conf /etc/php/7.4/fpm/pool.d/
 
-COPY	./tools/script.sh /home/
+COPY	./tools/connect_db.sh /home/
 
-RUN		chmod +x /home/script.sh\
-		&& bash /home/script.sh
-# RUN		bash /home/script.sh && rm /home/script.sh
+# connect database
+RUN		chmod +x /home/connect_db.sh\
+		&& bash /home/connect_db.sh && rm /home/connect_db.sh
+
+# load wordpres-cli to able to use CLI to create users
+RUN		wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar\
+		&& chmod +x wp-cli.phar\
+		&& mv wp-cli.phar /usr/local/bin/wp
 
 RUN		service php7.4-fpm start
 
