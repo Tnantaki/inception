@@ -3,8 +3,8 @@ VOLUME_DIR = /home/tnantaki/data
 all: createdir build
 
 createdir:
-	mkdir -p ${VOLUME_DIR}/wordpress
-	mkdir -p ${VOLUME_DIR}/mariadb
+	sudo mkdir -p ${VOLUME_DIR}/wordpress
+	sudo mkdir -p ${VOLUME_DIR}/mariadb
 
 build:
 	docker compose -f ./srcs/docker-compose.yml --env-file ./srcs/.env up -d --build
