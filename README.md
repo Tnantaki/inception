@@ -26,7 +26,7 @@ CMD		[ "nginx", "-g", "daemon off;" ]
 - 2 container, nginx and wordpress.
 - open browser with URL `localhost:130`.
 #### knowledge
-- How 2 container connected and transfer data.
+- How nginx server can connect to php server and transfer data.
 - Docker volume.
 ##### Question : Why we need to use *Volume* and mount to nginx server even we have wordpress server to pass content
 - `Volume` use to persist data, The reason we mount nginx server to wordpress-database for access data that not have to use php-fpm to convert. if we don't mount ningx sever to wordpress-database, image will not display.
@@ -34,7 +34,8 @@ CMD		[ "nginx", "-g", "daemon off;" ]
 - 3 container, nginx, wordpress and mariadb.
 - open browser with URL `localhost:140`.
 #### knowledge
-- How 3 container connected and transfer data.
-- Docker volume.
-
+- How wordpress-php sever talk to mariadb server.
+- Environment file
+##### Question : Why we need to install `mysql_secure_installation`
+- it's kinda restrict to install `mysql_secure_installation` to make wordpress-php server access to mariadb server.
 ## src

@@ -18,12 +18,5 @@ re: down build
 
 clean:
 	docker compose -f docker-compose.yml --env-file .env down --rmi all --volumes
-#	docker system prune --all
 
-fclean:
-	docker stop $(docker ps -qa)
-	docker system prune --all --force --volumes
-	docker network prune --force
-	docker volume prune --force
-
-.PHONY : all build down start stop re clean fclean
+.PHONY : all build down start stop re clean

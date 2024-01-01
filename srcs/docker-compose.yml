@@ -2,14 +2,53 @@ version: '3'
 services:
   nginx:
     image: nginx-img
-    container_name: miawmiaw
+    container_name: nginx
     build:
-      context: requirements/nginx
+      context: src/nginx
       dockerfile: Dockerfile
     ports:
-      - 80:80
+      - 443:443
+    volumes:
+      - wordpress-content:/var/www/html/wordpress
     networks:
-      - test
+      - inception
+    depends_on:
+      - wordpress
+  wordpress:
+    image: wordpress-img
+    container_name: wordpress
+    build:
+      context: src/wordpress
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - wordpress-content:/var/www/html/wordpress
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+  mariadb:
+    image: mariadb-img
+    container_name: mariadb
+    build:
+      context: src/mariadb
+      dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_ROOT: ${DB_ROOT}
+    volumes:
+      - mariadb-database:/var/lib/mysql
+    networks:
+      - inception
+
+volumes:
+  wordpress-content:
+    driver: local
+  mariadb-database:
+    driver: local
 networks:
-  test:
+  inception:
     driver: bridge

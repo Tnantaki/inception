@@ -20,19 +20,8 @@ services:
     build:
       context: src/wordpress
       dockerfile: Dockerfile
-      args:
-        DOMAIN_NAME: ${DB_NAME}
-        DB_NAME: ${DB_NAME}
-        DB_USER: ${DB_USER}
-        DB_PASSWORD: ${DB_PASSWORD}
-        DB_HOSTNAME: ${DB_HOSTNAME}
-        WP_ADTITLE: ${WP_ADTITLE}
-        WP_ADUSER: ${WP_ADUSER}
-        WP_ADPASS: ${WP_ADPASS}
-        WP_ADEMAIL: ${WP_ADEMAIL}
-        WP_USER: ${WP_USER}
-        WP_PASS: ${WP_PASS}
-        WP_EMAIL: ${WP_EMAIL}
+    env_file:
+      - .env
     volumes:
       - wordpress-content:/var/www/html/wordpress
     networks:
