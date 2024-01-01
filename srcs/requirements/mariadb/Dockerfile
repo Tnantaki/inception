@@ -9,8 +9,6 @@ COPY	./conf/50-server.cnf etc/mysql/mariadb.conf.d
 
 COPY	./tools/mariadb.sh /home
 
-RUN		service mariadb start
-
 RUN		chmod +x /home/mariadb.sh\
 		&& bash /home/mariadb.sh && rm /home/mariadb.sh\
 		&& chown -R mysql:mysql /var/run/mysqld\

@@ -9,8 +9,8 @@ RUN		mkdir -p /etc/nginx/ssl\
 
 COPY	./conf/nginx.conf ./etc/nginx/conf.d/
 
-RUN		rm /etc/nginx/sites-enabled/default\
-		 /etc/nginx/sites-available/default
+# RUN		rm /etc/nginx/sites-enabled/default \
+# 		/etc/nginx/sites-available/default
 
 CMD		[ "nginx", "-g", "daemon off;" ]
 

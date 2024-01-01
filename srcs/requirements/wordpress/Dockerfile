@@ -24,8 +24,10 @@ RUN		chmod +x /home/setup_wp.sh
 
 RUN		service php7.4-fpm start
 
-# CMD		[ "/usr/sbin/php-fpm7.4", "-F" ]
+ENTRYPOINT [ "/home/setup_wp.sh" ]
+
+CMD		[ "/usr/sbin/php-fpm7.4", "-F" ]
 
 # CMD		[ "bash", "/home/setup_wp" ]
 
-CMD		[ "sleep", "infinity" ]
+# CMD		[ "sleep", "infinity" ]

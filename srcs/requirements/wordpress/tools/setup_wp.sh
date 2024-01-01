@@ -18,5 +18,5 @@ then
 	wp user create ${WP_USER} ${WP_EMAIL} --user_pass=${WP_PASS} --allow-root
 fi
 
-# run php-fpm on foreground
-/usr/sbin/php-fpm7.4 -F
+# Execute a command in place of the current shell process.
+exec "$@"
