@@ -50,13 +50,13 @@ services:
 volumes:
   wordpress-content:
     driver: local
-    dirver_opts:
+    driver_opts:
       o: bind
       type: none
       device: /home/tnantaki/data/wordpress
   mariadb-database:
     driver: local
-    dirver_opts:
+    driver_opts:
       o: bind
       type: none
       device: /home/tnantaki/data/mariadb
