@@ -16,6 +16,8 @@ then
 		--admin_password=${WP_ADPASS} \
 		--admin_email=${WP_ADEMAIL} --allow-root
 	wp user create ${WP_USER} ${WP_EMAIL} --user_pass=${WP_PASS} --allow-root
+	chown -R www-data:www-data /var/www/html/wordpress
+	chmod -R 755 /var/www/html/wordpress
 fi
 
 # Execute a command in place of the current shell process.

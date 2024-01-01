@@ -17,5 +17,3 @@ RUN		chmod +x /home/mariadb.sh\
 CMD		[ "/usr/bin/mysqld_safe" ]
 
 # CMD		[ "sleep", "infinity" ]
-
-EXPOSE	3306

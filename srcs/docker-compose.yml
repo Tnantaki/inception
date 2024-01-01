@@ -12,6 +12,7 @@ services:
       - wordpress-content:/var/www/html/wordpress
     networks:
       - inception
+    restart: always
     depends_on:
       - wordpress
   wordpress:
@@ -26,6 +27,7 @@ services:
       - wordpress-content:/var/www/html/wordpress
     networks:
       - inception
+    restart: always
     depends_on:
       - mariadb
   mariadb:
@@ -43,12 +45,21 @@ services:
       - mariadb-database:/var/lib/mysql
     networks:
       - inception
+    restart: always
 
 volumes:
   wordpress-content:
     driver: local
+    dirver_opts:
+      o: bind
+      type: none
+      device: /home/tnantaki/data/wordpress
   mariadb-database:
     driver: local
+    dirver_opts:
+      o: bind
+      type: none
+      device: /home/tnantaki/data/mariadb
 networks:
   inception:
     driver: bridge
