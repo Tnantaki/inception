@@ -38,4 +38,5 @@ CMD		[ "nginx", "-g", "daemon off;" ]
 - Environment file
 ##### Question : Why we need to install `mysql_secure_installation`
 - it's kinda restrict to install `mysql_secure_installation` to make wordpress-php server access to mariadb server.
-## src
+### step 05
+- 3 container with `https://localhost` and set 2 user by script

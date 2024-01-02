@@ -1,10 +1,4 @@
-VOLUME_DIR = /home/tnantaki/data
-
-all: init build
-
-init:
-	sudo mkdir -p ${VOLUME_DIR}/wordpress
-	sudo mkdir -p ${VOLUME_DIR}/mariadb
+all: build
 
 build:
 	docker compose -f ./srcs/docker-compose.yml --env-file ./srcs/.env up -d --build
@@ -24,9 +18,9 @@ clean:
 	docker compose -f ./srcs/docker-compose.yml --env-file ./srcs/.env down --rmi all --volumes
 
 fclean:
-	docker stop $$(docker ps -qa) 
+	docker stop $$(docker ps -qa)
 	docker system prune --all --force
 	docker network prune --force
 	docker volume prune --force
 
-.PHONY : all init build down start stop re clean fclean
+.PHONY : all set build down start stop re clean fclean
