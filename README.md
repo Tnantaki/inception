@@ -16,7 +16,6 @@ sudo vim /etc/hosts
 #### On Windows
 Map on this path with administrator `c:\Windows\System32\Drivers\etc\hosts`
 
----
 ### 2. Execution
 To run servers, run `make` on **inception** directory.
 
@@ -27,8 +26,8 @@ $ make
 > ⚠️ Warning
 >
 >  You need to let me create directory to mount volumes. maybe you have to fill the password of your sudo.
----
-### 3. Usage
+
+### 3. Access
 1. After run server successful, open any browser in your PC with this URL https://tnantaki.42.fr and preceed with unsafe
  ![](images/secure_webpage.png)
  
