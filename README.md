@@ -1,42 +1,34 @@
-> This has not finish yet
 # inception
-## learn docker
-- execute `make` for run server, execute `make down` to down server.
-### step 01
-#### description
-- server nginx that serve default website via port `100`.
-- open browser with URL `localhost:100`.
-#### knowledge
-- Basic of configure nginx
-- Basic of Dockerfile, Docker compose
-##### Question : Why do need to use
-```Dockerfile
-CMD		[ "nginx", "-g", "daemon off;" ]
+> This project aim to using Docker to virtualize 3 server. Webserver, PHP-server and Database server to serve Wordpress webpage. I have to write dockerfile base on Debian OS and install individual packages , configuration files on each container. And all of it can be call by Docker-compose.
+### Servers Diagram
+![](images/server_diagram.png)
+
+---
+## 📝Usage
+### 1. Requirement
+1. You must have Docker on your PC.
+2. I name domain name as the Intra name. So if you want to run on PC, You have to change loopback IP address to take my domain name too.
+**on linux**
+```bash
+sudo vim /etc/hosts
 ```
-- This command will make nginx not run on the backgroud, That make container stay running.
-### step 02
-- server nginx, wordpress wiht php-fmp, mariadb in one container.
-- open browser with URL `localhost:120`.
-#### knowledge
-- Install 3 service to serve wordpress browser.
-- Pass environment in Docker.
-##### Question : What different between `args` and `env_file`
-- `args` will defined on the build-time but `envs` will defined on run-time. `args` will be not longer on run-time.
-### step 03
-- 2 container, nginx and wordpress.
-- open browser with URL `localhost:130`.
-#### knowledge
-- How nginx server can connect to php server and transfer data.
-- Docker volume.
-##### Question : Why we need to use *Volume* and mount to nginx server even we have wordpress server to pass content
-- `Volume` use to persist data, The reason we mount nginx server to wordpress-database for access data that not have to use php-fpm to convert. if we don't mount ningx sever to wordpress-database, image will not display.
-### step 04
-- 3 container, nginx, wordpress and mariadb.
-- open browser with URL `localhost:140`.
-#### knowledge
-- How wordpress-php sever talk to mariadb server.
-- Environment file
-##### Question : Why we need to install `mysql_secure_installation`
-- it's kinda restrict to install `mysql_secure_installation` to make wordpress-php server access to mariadb server.
-### step 05
-- 3 container with `https://localhost` and set 2 user by script
+![](images/add_domain.png)
+**on windows**
+Change on this path with administrator `c:\Windows\System32\Drivers\etc\hosts`
+
+
+### 2. Execution
+To run servers, run `make` on **inception** directory.
+
+```bash
+$ make
+```
+
+> ⚠️ Warning
+>  You need to let me create directory to mount volumes. maybe you have to fill the password of your sudo.
+### 3. Usage
+1. After run server successful, open any browser in your PC with this URL https://tnantaki.42.fr
+ ![](images/secure_webpage.png)
+ 
+2. Proceed with unsafe
+ ![](images/wordpress_webpage.png)
