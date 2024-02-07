@@ -9,7 +9,7 @@ RUN		apt update\
 		&& apt install vim nginx -y
 
 # install php
-RUN		apt install wget php7.4 php7.4-fpm php-mysql -y\
+RUN		apt install wget php7.4 php7.4-fpm php-mysql -y
 
 # load wordpress content
 RUN		mkdir -p /var/www/html\

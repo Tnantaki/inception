@@ -7,7 +7,7 @@ services:
       context: src/nginx
       dockerfile: Dockerfile
     ports:
-      - 140:140
+      - 1024:1024
     volumes:
       - wordpress-content:/var/www/html/wordpress
     networks:

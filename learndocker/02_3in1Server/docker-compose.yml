@@ -13,4 +13,4 @@ services:
     # env_file:
     #   - .env
     ports:
-      - 120:120
+      - 1024:1024
