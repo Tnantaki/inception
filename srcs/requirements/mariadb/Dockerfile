@@ -14,6 +14,8 @@ RUN		chmod +x /home/mariadb.sh\
 		&& chown -R mysql:mysql /var/run/mysqld\
 		&& chmod -R 777 /var/run/mysqld
 
-CMD		[ "/usr/bin/mysqld_safe" ]
+CMD		[ "mysqld" ]
+
+# CMD		[ "/usr/bin/mysqld_safe" ]
 
 # CMD		[ "sleep", "infinity" ]

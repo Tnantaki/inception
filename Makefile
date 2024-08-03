@@ -1,10 +1,4 @@
-VOLUME_DIR = /home/tnantaki/data
-
-all: init build
-
-init:
-	sudo mkdir -p ${VOLUME_DIR}/wordpress
-	sudo mkdir -p ${VOLUME_DIR}/mariadb
+all: build
 
 build:
 	docker compose -f ./srcs/docker-compose.yml --env-file ./srcs/.env up -d --build
